@@ -13,7 +13,6 @@ class MainMenu : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val planButton = findViewById<Button>(R.id.planBtn)
-        val listView = findViewById<ListView>(R.id.listView)
         val profileBtn = findViewById<ImageButton>(R.id.profileBtn)
         val settingBtn = findViewById<ImageButton>(R.id.settingBtn)
 

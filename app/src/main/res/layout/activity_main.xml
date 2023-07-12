@@ -10,63 +10,47 @@
         android:id="@+id/planBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="64dp"
         android:text="Start Plan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.245" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Trip Planner"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/planBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852" />
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/planBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <ImageButton
         android:id="@+id/settingBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="19dp"
         android:background="#FFFFFF"
         android:scaleX="1"
         android:scaleY="1"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
 
     <ImageButton
         android:id="@+id/profileBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
         android:src="@android:drawable/btn_star"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="419dp"
+        android:layout_marginTop="128dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

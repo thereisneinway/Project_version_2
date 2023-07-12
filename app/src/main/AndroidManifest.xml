@@ -23,6 +23,7 @@
             android:value="AIzaSyCfw_O6t87J_otZcLdUUheTjIfmlIgwBrU" />
         <activity
             android:name=".SignIn"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
