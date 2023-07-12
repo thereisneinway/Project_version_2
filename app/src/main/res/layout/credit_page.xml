@@ -7,16 +7,11 @@
 
     <ImageButton
         android:id="@+id/sbackBtn"
-        android:layout_width="49dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="88dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:background="#FFFFFF"
-        android:scaleX="2"
-        android:scaleY="2"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/actionModeCloseDrawable" />

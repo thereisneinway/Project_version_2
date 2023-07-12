@@ -34,7 +34,6 @@ class AttractionList : AppCompatActivity(), AttractionAdapter.ClickListener {
         recyclerView.adapter = adapter
         //load data from firebase to attractionList
         fetchData()
-        //load image from file by uri from firebase
 
 
         backBtn.setOnClickListener{

@@ -22,7 +22,7 @@ class AttractionAdapter (private val attractionList: ArrayList<Attractions>, pri
         holder.txtName.text = attractionList[position].name
         holder.txtLocation.text = attractionList[position].location
         holder.txtRating.rating = attractionList[position].rating.toFloat()
-        //holder.txtImage.setImageResource(context.resources.getIdentifier(attractionList[position].imageAddr,"drawable",context.packageName))
+        holder.txtImage.setImageResource(context.resources.getIdentifier(attractionList[position].imageAddr,"drawable",context.packageName))
 
         holder.itemView.setOnClickListener{
             clickListener.clickedItem(attractionsModel)

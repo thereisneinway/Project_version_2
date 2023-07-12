@@ -13,9 +13,7 @@ class AboutUs : AppCompatActivity() {
         val backBtn = findViewById<ImageButton>(R.id.aboutbackBtn)
 
         backBtn.setOnClickListener(){
-
-            val intent = Intent(this, setting::class.java)
-            startActivity(intent)
+            finish()
         }
 
     }

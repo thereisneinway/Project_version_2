@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainMenu">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/planBtn"
         android:layout_width="0dp"
@@ -22,11 +33,9 @@
 
     <ImageButton
         android:id="@+id/settingBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="19dp"
-        android:background="#FFFFFF"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="?attr/colorPrimary"
         android:scaleX="1"
         android:scaleY="1"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,22 +44,23 @@
 
     <ImageButton
         android:id="@+id/profileBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="?attr/colorPrimary"
         android:src="@android:drawable/btn_star"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="0dp"
+        android:id="@+id/logoImageView"
+        android:layout_width="wrap_content"
         android:layout_height="419dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginBottom="96dp"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/logo" />
+        tools:srcCompat="@mipmap/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

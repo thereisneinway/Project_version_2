@@ -9,7 +9,7 @@ class CompassSelection : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.compass_selection)
-
+        val backBtn = findViewById<Button>(R.id.backcompass)
         val northBtn = findViewById<Button>(R.id.northBtn)
         val southBtn = findViewById<Button>(R.id.southBtn)
         val westBtn = findViewById<Button>(R.id.westBtn)
@@ -17,6 +17,9 @@ class CompassSelection : AppCompatActivity() {
         val centralBtn = findViewById<Button>(R.id.centralBtn)
         val northeastBtn = findViewById<Button>(R.id.northeastBtn)
 
+        backBtn.setOnClickListener{
+            finish()
+        }
         northBtn.setOnClickListener {
             val intent = Intent(this, AttractionList::class.java)
             intent.putExtra("region", "north")

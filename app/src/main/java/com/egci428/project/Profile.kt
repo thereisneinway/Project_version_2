@@ -35,8 +35,7 @@ class Profile : AppCompatActivity() {
 
         val backBtn3 = findViewById<ImageButton>(R.id.profileBackBtn)
         backBtn3.setOnClickListener {
-            intent = Intent(this, setting::class.java)
-            startActivity(intent)
+            finish()
         }
 
         val change_picture_button = findViewById<Button>(R.id.change_picture_button)

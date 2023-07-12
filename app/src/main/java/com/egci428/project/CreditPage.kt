@@ -13,9 +13,7 @@ class CreditPage : AppCompatActivity() {
         val backBtn = findViewById<ImageButton>(R.id.sbackBtn)
 
         backBtn.setOnClickListener(){
-
-            val intent = Intent(this, setting::class.java)
-            startActivity(intent)
+            finish()
         }
 
     }

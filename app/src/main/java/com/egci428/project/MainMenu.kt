@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.ListView
 
 class MainMenu : AppCompatActivity() {
@@ -15,6 +16,8 @@ class MainMenu : AppCompatActivity() {
         val planButton = findViewById<Button>(R.id.planBtn)
         val profileBtn = findViewById<ImageButton>(R.id.profileBtn)
         val settingBtn = findViewById<ImageButton>(R.id.settingBtn)
+        val logo = findViewById<ImageView>(R.id.logoImageView)
+        logo.setImageResource(resources.getIdentifier("logo","mipmap",packageName))
 
         planButton.setOnClickListener {
             val intent = Intent(this, CompassSelection::class.java)
@@ -27,8 +30,8 @@ class MainMenu : AppCompatActivity() {
         }
 
         profileBtn.setOnClickListener(){
-            val intent = Intent(this, Profile::class.java)
-            startActivity(intent)
+            //val intent = Intent(this, Profile::class.java)
+            //startActivity(intent)
         }
     }
 

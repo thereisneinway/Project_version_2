@@ -20,14 +20,25 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_up_activity)
         val addBtn = findViewById<Button>(R.id.addBtn)
+        val backBtn = findViewById<Button>(R.id.backSignup)
         userSignText = findViewById(R.id.userSignText)
         passSignText = findViewById(R.id.passSignText)
 
-
+        backBtn.setOnClickListener{
+            finish()
+        }
         addBtn.setOnClickListener {
-            saveData()
-            val intent = Intent(this, MainMenu::class.java)
-            startActivity(intent)
+            val usr = userSignText.text.toString()
+            val pwd = passSignText.text.toString()
+            if (usr.isEmpty()) {
+                userSignText.error = "Please enter your username"
+                if(pwd.isEmpty()){
+                    passSignText.error = "Please enter your password"
+                }
+            }else{
+                saveData()
+                finish()
+            }
         }
     }
 
@@ -35,15 +46,6 @@ class SignUp : AppCompatActivity() {
         val usr = userSignText.text.toString()
         val pwd = passSignText.text.toString()
         Log.d("Debug", usr)
-        if (usr.isEmpty()) {
-            userSignText.error = "Please enter your username"
-            return
-        }
-        if(pwd.isEmpty()){
-            passSignText.error = "Please enter your password"
-            return
-        }
-        val userId = usr
         val userData = User(usr, pwd)
         val line = userData.username+","+userData.password+"\n"
         try {
