@@ -65,12 +65,12 @@ class SignIn : AppCompatActivity() {
                     e.printStackTrace()
                 }
             }else{
-                Toast.makeText(this, "Provide valid username or password", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Provide valid username or password", Toast.LENGTH_SHORT).show()
             }
             //for development
-            //val intent = Intent(this, MainMenu::class.java)
-            //startActivity(intent)
-            //finish()
+            val intent = Intent(this, MainMenu::class.java)
+            startActivity(intent)
+            finish()
         }
         cancelBtn.setOnClickListener {
             userText.text = null

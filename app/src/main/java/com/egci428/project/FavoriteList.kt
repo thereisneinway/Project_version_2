@@ -21,12 +21,9 @@ class FavoriteList : AppCompatActivity(),AttractionAdapter.ClickListener {
     var favoriteList : ArrayList<Attractions> = ArrayList()
     var adapter = AttractionAdapter(favoriteList, this,this)
 
-    private lateinit var mSensorManager: SensorManager
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite_list)
-
 
         val backBtn = findViewById<Button>(R.id.backList2)
         val favoritetitle = findViewById<TextView>(R.id.favoriteTitle)
