@@ -1,5 +1,6 @@
 package com.egci428.project
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -7,13 +8,15 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
+import java.io.IOException
+import java.io.InputStreamReader
 
 class AttractionDetail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_attraction_detail)
         //open files
-
+        val fileName = "attractions.txt"
         val name = intent.getStringExtra("name")
         val description = intent.getStringExtra("description")
         val location = intent.getStringExtra("location")
@@ -40,10 +43,26 @@ class AttractionDetail : AppCompatActivity() {
         detImage.setImageResource(resources.getIdentifier(imageAddr,"drawable",packageName))
 
         saveAttraction.setOnClickListener{
-            //check if duplicate
-            //save Lat long to file (save name lat long)
-            Toast.makeText(this,"saved", Toast.LENGTH_SHORT).show()
-            //if duplicate then toast error
+            val fileContents = "${name};${description};${location};${hours};${rating};${imageAddr};${lat.toString()};${long.toString()}"
+
+            try {
+                val fileInputStream = openFileInput(fileName)
+                val existingData = InputStreamReader(fileInputStream).readText()
+                fileInputStream.close()
+
+                if (existingData.contains(fileContents)) {
+                    Toast.makeText(baseContext, "Location already saved", Toast.LENGTH_SHORT).show()
+                } else {
+                    val fileOutputStream = openFileOutput(fileName, Context.MODE_APPEND or Context.MODE_PRIVATE)
+                    fileOutputStream.write(fileContents.toByteArray())
+                    fileOutputStream.write(System.getProperty("line.separator").toByteArray())
+                    fileOutputStream.close()
+                    Toast.makeText(baseContext, "Added to favorite", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+                Toast.makeText(baseContext, "Can't add to favorite", Toast.LENGTH_SHORT).show()
+            }
         }
         backBtn.setOnClickListener{
             finish()

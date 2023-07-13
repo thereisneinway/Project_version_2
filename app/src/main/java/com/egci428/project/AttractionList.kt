@@ -56,11 +56,18 @@ class AttractionList : AppCompatActivity(), AttractionAdapter.ClickListener {
             }
             override fun onPostExecute(result: String?) {
                 super.onPostExecute(result)
-                attractionList.clear()
-                attractionList.addAll(Gson().fromJson<ArrayList<Attractions>>(result,object : TypeToken<ArrayList<Attractions>>() {}.type))
-                recyclerView.adapter = adapter
-                adapter.notifyDataSetChanged()
-                println("=========Loaded to adapter")
+                try {
+                    attractionList.clear()
+                    attractionList.addAll(Gson().fromJson<ArrayList<Attractions>>(result,
+                        object : TypeToken<ArrayList<Attractions>>() {}.type))
+                    recyclerView.adapter = adapter
+                    adapter.notifyDataSetChanged()
+                    println("=========Loaded to adapter")
+                    Toast.makeText(this@AttractionList,"Found: "+ attractionList.size, Toast.LENGTH_SHORT).show()
+                }catch(e: Exception){
+                    e.printStackTrace()
+                    Toast.makeText(this@AttractionList,"Can't connect to database", Toast.LENGTH_SHORT).show()
+                }
             }
             override fun doInBackground(vararg params: String): String {
                 val builder = Request.Builder()
