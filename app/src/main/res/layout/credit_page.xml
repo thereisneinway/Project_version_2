@@ -59,7 +59,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/share_rouned_corner_plaintext"
-        android:text=" 6481321Sahaluk Tanawongwiboon"
+        android:text=" 6380145 Thanakit Chaichanawong"
         android:textAlignment="center"
         android:textColor="#373AD8"
         android:textSize="24sp"
