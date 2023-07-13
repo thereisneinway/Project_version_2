@@ -1,7 +1,6 @@
 package com.egci428.project
 
 import android.content.Context
-import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -18,6 +17,7 @@ import java.io.InputStreamReader
 
 class AttractionDetail : AppCompatActivity(), SensorEventListener {
     private var sensorManager: SensorManager? = null
+    private var lastUpdate: Long = 0
     private val fileName = "attractions.txt"
     private var name = ""
     private var description = ""
@@ -31,6 +31,7 @@ class AttractionDetail : AppCompatActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_attraction_detail)
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        lastUpdate = System.currentTimeMillis()
         name = intent.getStringExtra("name").toString()
         description = intent.getStringExtra("description").toString()
         location = intent.getStringExtra("location").toString()
@@ -57,7 +58,7 @@ class AttractionDetail : AppCompatActivity(), SensorEventListener {
         detImage.setImageResource(resources.getIdentifier(imageAddr,"drawable",packageName))
 
         saveAttraction.setOnClickListener{
-            val fileContents = "${name};${description};${location};${hours};${rating};${imageAddr};${lat.toString()};${long.toString()}"
+            val fileContents = "${name};${description};${location};${hours};${rating};${imageAddr};${lat};${long}"
 
             try {
                 val fileInputStream = openFileInput(fileName)
@@ -84,7 +85,6 @@ class AttractionDetail : AppCompatActivity(), SensorEventListener {
 
     }
     override fun onSensorChanged(event: SensorEvent) {
-        println("==========================SENSOR CHANGE")
         if (event.sensor.type == Sensor.TYPE_ACCELEROMETER) {
             getAccelerometer(event)
         }
@@ -94,19 +94,22 @@ class AttractionDetail : AppCompatActivity(), SensorEventListener {
     }
 
     private fun getAccelerometer(event: SensorEvent) {
-        println("==========================FN run")
+
         val values = event.values
         // Movement
         val x = values[0]
         val y = values[1]
         val z = values[2]
-
+        val actualTime = System.currentTimeMillis()
         val accel = (x * x + y * y + z * z) / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH)
         if (accel >= 1)
         {
-            println("==========================LIST ADDED")
+            if (actualTime - lastUpdate < 200) {
+                return
+            }
+            lastUpdate = actualTime
             try {
-                val fileContents = "${name};${description};${location};${hours};${rating};${imageAddr};${lat.toString()};${long.toString()}"
+                val fileContents = "${name};${description};${location};${hours};${rating};${imageAddr};${lat};${long}"
                 val fileInputStream = openFileInput(fileName)
                 val existingData = InputStreamReader(fileInputStream).readText()
                 fileInputStream.close()

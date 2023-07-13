@@ -33,7 +33,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
     private var locationManager: LocationManager? = null
     private var locationListener: LocationListener? = null
-    private lateinit var currentLatLng : LatLng
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,7 +81,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun loadAttractionsFromFile(fileName: String){
         try {
-            val fileInputStream = openFileInput("attractions.txt")
+            val fileInputStream = openFileInput(fileName)
             val reader = BufferedReader(InputStreamReader(fileInputStream))
             var line: String?
 
