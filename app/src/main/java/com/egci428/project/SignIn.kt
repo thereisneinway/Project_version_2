@@ -56,6 +56,7 @@ class SignIn : AppCompatActivity() {
                         Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainMenu::class.java)
                         startActivity(intent)
+                        finish()
                     } else {
                         Toast.makeText(this, "Incorrect username or password", Toast.LENGTH_SHORT).show()
                     }
@@ -63,11 +64,13 @@ class SignIn : AppCompatActivity() {
                 } catch (e: Exception){
                     e.printStackTrace()
                 }
+            }else{
+                Toast.makeText(this, "Provide valid username or password", Toast.LENGTH_SHORT).show()
             }
             //for development
-            val intent = Intent(this, MainMenu::class.java)
-            startActivity(intent)
-            finish()
+            //val intent = Intent(this, MainMenu::class.java)
+            //startActivity(intent)
+            //finish()
         }
         cancelBtn.setOnClickListener {
             userText.text = null

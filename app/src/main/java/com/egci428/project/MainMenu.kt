@@ -8,6 +8,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.hardware.Sensor
+import android.hardware.SensorManager
+import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -30,6 +33,7 @@ class MainMenu : AppCompatActivity() {
     private val notificationManager: NotificationManager by lazy {
         getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     }
+    private lateinit var mSensorManager: SensorManager
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -71,7 +75,8 @@ class MainMenu : AppCompatActivity() {
             fileOutputStream.write("".toByteArray())
             fileOutputStream.close()
             if(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED){
-                notifyMessage("TRAVEL PLANNER", "Goodbye")
+                mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+                notifyMessage("TRAVEL PLANNER", "The current temperature is " + Sensor.TYPE_AMBIENT_TEMPERATURE + " \nYour favorite list has been removed")
             } else {
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }

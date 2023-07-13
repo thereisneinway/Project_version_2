@@ -96,8 +96,8 @@ class AttractionList : AppCompatActivity(), AttractionAdapter.ClickListener {
         intent.putExtra("hours", attractionsModel.hours)
         intent.putExtra("rating", attractionsModel.rating.toFloat())
         intent.putExtra("imageAddr", attractionsModel.imageAddr)
-        intent.putExtra("lat", attractionsModel.lat)//Double
-        intent.putExtra("long", attractionsModel.long)//Double
+        intent.putExtra("lat", attractionsModel.lat.toString())//Double
+        intent.putExtra("long", attractionsModel.long.toString())//Double
         startActivity(intent)
     }
 }

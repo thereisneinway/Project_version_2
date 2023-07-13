@@ -58,4 +58,14 @@
         app:layout_constraintStart_toStartOf="@+id/toolbar4"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/openmaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MAPS"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

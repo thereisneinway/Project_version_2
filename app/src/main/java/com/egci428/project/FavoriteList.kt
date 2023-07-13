@@ -1,6 +1,7 @@
 package com.egci428.project
 
 import android.content.Intent
+import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -20,6 +21,8 @@ class FavoriteList : AppCompatActivity(),AttractionAdapter.ClickListener {
     var favoriteList : ArrayList<Attractions> = ArrayList()
     var adapter = AttractionAdapter(favoriteList, this,this)
 
+    private lateinit var mSensorManager: SensorManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite_list)
@@ -27,12 +30,17 @@ class FavoriteList : AppCompatActivity(),AttractionAdapter.ClickListener {
 
         val backBtn = findViewById<Button>(R.id.backList2)
         val favoritetitle = findViewById<TextView>(R.id.favoriteTitle)
+        val mapBtn = findViewById<Button>(R.id.openmaps)
         recyclerView = findViewById(R.id.favoriteLists2)
         recyclerView.layoutManager = LinearLayoutManager(baseContext, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = adapter
         loadFavoriteAttractions()
         backBtn.setOnClickListener {
             finish()
+        }
+        mapBtn.setOnClickListener {
+            val intent = Intent(this, MapsActivity::class.java)
+            startActivity(intent)
         }
     }
     private fun loadFavoriteAttractions() {
@@ -44,7 +52,6 @@ class FavoriteList : AppCompatActivity(),AttractionAdapter.ClickListener {
             var line: String?
 
             while (reader.readLine().also { line = it } != null) {
-                println("=====open while")
                 val attributes = line!!.split(";")
 
 
@@ -75,11 +82,9 @@ class FavoriteList : AppCompatActivity(),AttractionAdapter.ClickListener {
                         long = long
                     )
                     favoriteList.add(attraction)
-                    println("=====added item")
 
             }
             adapter.notifyDataSetChanged()
-            println("=====SIZE fav:"+favoriteList.size)
             Toast.makeText(this@FavoriteList,"Data fetched", Toast.LENGTH_SHORT).show()
 
             reader.close()
